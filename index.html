@@ -1,0 +1,574 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ReMarket - Buy Smart. Sell Easy.</title>
+
+    <link rel="stylesheet" href="style.css">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+</head>
+
+<body>
+
+    <!-- ================= HEADER ================= -->
+
+    <header class="header">
+        <div class="logo-area" onclick="showHome()">
+            <div class="logo-icon">↻</div>
+            <div class="logo-text">ReMarket</div>
+        </div>
+
+        <nav class="navigation">
+            <a href="#" onclick="showHome(); return false;">Home</a>
+            <a href="#" onclick="scrollToBrowse(); return false;">Browse</a>
+            <a href="#" onclick="scrollToBrowse(); return false;">Categories</a>
+            <a href="#" onclick="showFavorites(); return false;">
+                Favorites <span class="heart-pink">♥</span>
+            </a>
+            <a href="#" onclick="showMyListings(); return false;">My Listings</a>
+            <button class="sell-header-btn" onclick="showSellPage()">
+                + Sell Item
+            </button>
+        </nav>
+
+        <button class="mobile-menu" onclick="toggleMenu()">☰</button>
+    </header>
+
+
+    <!-- ================= HOME PAGE ================= -->
+
+    <main id="homePage">
+
+        <!-- HERO -->
+
+        <section class="hero">
+
+            <div class="hero-overlay"></div>
+
+            <div class="hero-content">
+
+                <div class="hero-small-title">
+                    BUY SMART • SELL EASY
+                </div>
+
+                <h1>
+                    Give your unused<br>
+                    things a new home.
+                </h1>
+
+                <p>
+                    Buy and sell quality used products directly with people around you.
+                </p>
+
+                <div class="hero-buttons">
+                    <button class="primary-btn" onclick="scrollToBrowse()">
+                        Browse Products
+                    </button>
+
+                    <button class="secondary-btn" onclick="showSellPage()">
+                        Sell Something
+                    </button>
+                </div>
+
+            </div>
+
+        </section>
+
+
+        <!-- ================= BROWSE SECTION ================= -->
+
+        <section class="browse-section" id="browseSection">
+
+            <div class="browse-heading">
+                <h2>Find What You Need</h2>
+                <p>Explore affordable pre-owned products.</p>
+            </div>
+
+
+            <!-- SEARCH -->
+
+            <div class="search-container">
+
+                <input
+                    type="text"
+                    id="searchInput"
+                    placeholder="Search for phones, bikes, furniture..."
+                    onkeyup="searchProducts()"
+                >
+
+                <button onclick="searchProducts()">
+                    🔍 Search
+                </button>
+
+            </div>
+
+
+            <!-- CATEGORIES -->
+
+            <div class="categories" id="categories">
+
+                <button class="category active" onclick="filterCategory('All', this)">
+                    All
+                </button>
+
+                <button class="category" onclick="filterCategory('Electronics', this)">
+                    📱 Electronics
+                </button>
+
+                <button class="category" onclick="filterCategory('Vehicles', this)">
+                    🚗 Vehicles
+                </button>
+
+                <button class="category" onclick="filterCategory('Furniture', this)">
+                    🛋 Furniture
+                </button>
+
+                <button class="category" onclick="filterCategory('Fashion', this)">
+                    👕 Fashion
+                </button>
+
+                <button class="category" onclick="filterCategory('Books', this)">
+                    📚 Books
+                </button>
+
+                <button class="category" onclick="filterCategory('Others', this)">
+                    📦 Others
+                </button>
+
+            </div>
+
+
+            <!-- PRODUCTS -->
+
+            <div class="products-grid" id="productsGrid">
+
+                <!-- PRODUCT 1 -->
+
+                <div class="product-card"
+                     data-category="Books"
+                     data-name="Harry Potter">
+
+                    <div class="product-image-container">
+
+                        <img
+                            src="https://images.unsplash.com/photo-1543002588-bfa74002ed7e?auto=format&fit=crop&w=800&q=85"
+                            alt="Harry Potter book"
+                        >
+
+                        <button
+                            class="favorite-btn"
+                            onclick="toggleFavorite(this, 'Harry Potter')">
+                            ♡
+                        </button>
+
+                    </div>
+
+                    <div class="product-info">
+
+                        <div class="product-category">
+                            BOOKS
+                        </div>
+
+                        <h3>Harry Potter</h3>
+
+                        <p class="description">
+                            Interesting book
+                        </p>
+
+                        <div class="price">
+                            ₹200
+                        </div>
+
+                        <div class="product-details">
+                            <span>📍 Erode</span>
+                            <span>Like New</span>
+                        </div>
+
+                        <button class="contact-btn" onclick="contactSeller('Harry Potter')">
+                            Contact Seller
+                        </button>
+
+                    </div>
+
+                </div>
+
+
+                <!-- PRODUCT 2 -->
+
+                <div class="product-card"
+                     data-category="Electronics"
+                     data-name="iPhone 13">
+
+                    <div class="product-image-container">
+
+                        <img
+                            src="https://images.unsplash.com/photo-1592286927505-2fd0b6eab6f5?auto=format&fit=crop&w=800&q=85"
+                            alt="iPhone"
+                        >
+
+                        <button
+                            class="favorite-btn"
+                            onclick="toggleFavorite(this, 'iPhone 13')">
+                            ♡
+                        </button>
+
+                    </div>
+
+                    <div class="product-info">
+
+                        <div class="product-category">
+                            ELECTRONICS
+                        </div>
+
+                        <h3>iPhone 13</h3>
+
+                        <p class="description">
+                            iPhone 13 128GB in good condition.
+                        </p>
+
+                        <div class="price">
+                            ₹38,000
+                        </div>
+
+                        <div class="product-details">
+                            <span>📍 Erode</span>
+                            <span>Good</span>
+                        </div>
+
+                        <button class="contact-btn" onclick="contactSeller('iPhone 13')">
+                            Contact Seller
+                        </button>
+
+                    </div>
+
+                </div>
+
+
+                <!-- PRODUCT 3 -->
+
+                <div class="product-card"
+                     data-category="Electronics"
+                     data-name="Dell Laptop">
+
+                    <div class="product-image-container">
+
+                        <img
+                            src="https://images.unsplash.com/photo-1593642532744-d377ab507dc8?auto=format&fit=crop&w=800&q=85"
+                            alt="Dell laptop"
+                        >
+
+                        <button
+                            class="favorite-btn"
+                            onclick="toggleFavorite(this, 'Dell Laptop')">
+                            ♡
+                        </button>
+
+                    </div>
+
+                    <div class="product-info">
+
+                        <div class="product-category">
+                            ELECTRONICS
+                        </div>
+
+                        <h3>Dell Laptop</h3>
+
+                        <p class="description">
+                            Dell laptop suitable for students.
+                        </p>
+
+                        <div class="price">
+                            ₹28,000
+                        </div>
+
+                        <div class="product-details">
+                            <span>📍 Coimbatore</span>
+                            <span>Good</span>
+                        </div>
+
+                        <button class="contact-btn" onclick="contactSeller('Dell Laptop')">
+                            Contact Seller
+                        </button>
+
+                    </div>
+
+                </div>
+
+
+                <!-- PRODUCT 4 -->
+
+                <div class="product-card"
+                     data-category="Vehicles"
+                     data-name="Mountain Bicycle">
+
+                    <div class="product-image-container">
+
+                        <img
+                            src="https://images.unsplash.com/photo-1485965120184-e220f721d03e?auto=format&fit=crop&w=800&q=85"
+                            alt="Mountain bicycle"
+                        >
+
+                        <button
+                            class="favorite-btn"
+                            onclick="toggleFavorite(this, 'Mountain Bicycle')">
+                            ♡
+                        </button>
+
+                    </div>
+
+                    <div class="product-info">
+
+                        <div class="product-category">
+                            VEHICLES
+                        </div>
+
+                        <h3>Mountain Bicycle</h3>
+
+                        <p class="description">
+                            Well-maintained mountain bicycle.
+                        </p>
+
+                        <div class="price">
+                            ₹8,500
+                        </div>
+
+                        <div class="product-details">
+                            <span>📍 Erode</span>
+                            <span>Good</span>
+                        </div>
+
+                        <button class="contact-btn" onclick="contactSeller('Mountain Bicycle')">
+                            Contact Seller
+                        </button>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </section>
+
+    </main>
+
+
+    <!-- ================= SELL PAGE ================= -->
+
+    <section class="sell-page" id="sellPage">
+
+        <div class="sell-container">
+
+            <div class="sell-heading">
+                <h2>Sell Your Product</h2>
+                <p>Create a listing and reach potential buyers.</p>
+            </div>
+
+
+            <form id="sellForm" onsubmit="publishListing(event)">
+
+                <div class="form-group">
+
+                    <label for="productName">
+                        Product Name
+                    </label>
+
+                    <input
+                        type="text"
+                        id="productName"
+                        value="Harry Potter"
+                        required
+                    >
+
+                </div>
+
+
+                <div class="form-group">
+
+                    <label for="productCategory">
+                        Category
+                    </label>
+
+                    <select id="productCategory">
+
+                        <option>Books</option>
+                        <option>Electronics</option>
+                        <option>Vehicles</option>
+                        <option>Furniture</option>
+                        <option>Fashion</option>
+                        <option>Others</option>
+
+                    </select>
+
+                </div>
+
+
+                <div class="form-group">
+
+                    <label for="productPrice">
+                        Price (₹)
+                    </label>
+
+                    <input
+                        type="number"
+                        id="productPrice"
+                        value="200"
+                        required
+                    >
+
+                </div>
+
+
+                <div class="form-group">
+
+                    <label for="productCondition">
+                        Condition
+                    </label>
+
+                    <select id="productCondition">
+
+                        <option>Like New</option>
+                        <option>Good</option>
+                        <option>Fair</option>
+                        <option>Used</option>
+
+                    </select>
+
+                </div>
+
+
+                <div class="form-group">
+
+                    <label for="productLocation">
+                        Location
+                    </label>
+
+                    <input
+                        type="text"
+                        id="productLocation"
+                        value="Erode"
+                        required
+                    >
+
+                </div>
+
+
+                <div class="form-group">
+
+                    <label for="productDescription">
+                        Product Description
+                    </label>
+
+                    <textarea
+                        id="productDescription"
+                        required
+                    >Interesting book</textarea>
+
+                </div>
+
+
+                <div class="form-group">
+
+                    <label for="productImage">
+                        Product Image
+                    </label>
+
+                    <input
+                        type="file"
+                        id="productImage"
+                        accept="image/*"
+                        onchange="previewImage(event)"
+                    >
+
+                    <small>
+                        Select a photo of the product from your computer.
+                    </small>
+
+                </div>
+
+
+                <div class="image-preview-container">
+
+                    <img
+                        id="imagePreview"
+                        src="https://images.unsplash.com/photo-1543002588-bfa74002ed7e?auto=format&fit=crop&w=500&q=85"
+                        alt="Product Preview"
+                    >
+
+                </div>
+
+
+                <div class="form-buttons">
+
+                    <button
+                        type="button"
+                        class="cancel-btn"
+                        onclick="showHome()">
+                        Cancel
+                    </button>
+
+                    <button
+                        type="submit"
+                        class="publish-btn">
+                        Publish Listing
+                    </button>
+
+                </div>
+
+            </form>
+
+        </div>
+
+    </section>
+
+
+    <!-- ================= FAVORITES PAGE ================= -->
+
+    <section class="simple-page" id="favoritesPage">
+
+        <div class="simple-content">
+
+            <h2>Your Favorites</h2>
+
+            <p id="favoriteMessage">
+                You haven't added any products to your favorites yet.
+            </p>
+
+            <div id="favoriteList"></div>
+
+        </div>
+
+    </section>
+
+
+    <!-- ================= MY LISTINGS PAGE ================= -->
+
+    <section class="simple-page" id="listingsPage">
+
+        <div class="simple-content">
+
+            <h2>My Listings</h2>
+
+            <p id="listingMessage">
+                You haven't published any listings yet.
+            </p>
+
+            <div id="myListings"></div>
+
+        </div>
+
+    </section>
+
+
+    <!-- ================= TOAST ================= -->
+
+    <div id="toast" class="toast"></div>
+
+
+    <script src="script.js"></script>
+
+</body>
+</html>
